@@ -1,0 +1,9 @@
+package primeOrNot;
+
+public class primeOrNot1 
+{
+	public static void main(String[] args) 
+	{
+		
+	}
+}
