@@ -1,0 +1,33 @@
+package sqrt;
+
+public class sqrt1 
+{
+	public static void main(String[] args) 
+	{
+		int n =40, precision =3;
+		double whole = 0;
+		
+		for(int i=1;i<n/2;i++)
+		{
+			if(i*i<n)
+			{ 
+				whole = i;
+				break;
+			}
+		}
+		
+		double number = 0.1;
+		
+		for(int i =1;i<=precision;i++)
+		{
+			while(whole*whole<=n)
+			{
+				whole+=number;
+			}
+			
+			number/=10;
+		}
+		
+		System.out.printf("%f"+whole);
+	}
+}
