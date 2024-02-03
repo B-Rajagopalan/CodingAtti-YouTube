@@ -2,7 +2,7 @@ package Easy;
 
 import java.util.HashMap;
 
-public class romanToInteger {
+public class RomanToInteger {
     public static void main(String[] args) {
         String s = "MCMXCIV";
         System.out.println(romanToInt(s));
