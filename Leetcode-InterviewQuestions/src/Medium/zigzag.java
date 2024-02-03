@@ -1,4 +1,4 @@
-package practice;
+package Medium;
 
 public class zigzag 
 {
