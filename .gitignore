@@ -5,8 +5,12 @@
 **bin/
 /.metadata/
 /.settings/
-*.classpath
-*.project
+
+# Eclipse Core      
+.project
+
+# JDT-specific (Eclipse Java Development Tools)     
+.classpath
 # Log file
 *.log
 
