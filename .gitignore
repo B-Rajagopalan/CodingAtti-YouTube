@@ -3,7 +3,9 @@
 
 #bin file
 **bin/
-/.metadata
+/.metadata/
+*.classpath
+*.project
 # Log file
 *.log
 
