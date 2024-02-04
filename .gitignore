@@ -4,6 +4,7 @@
 #bin file
 **bin/
 /.metadata/
+/.settings/
 *.classpath
 *.project
 # Log file
