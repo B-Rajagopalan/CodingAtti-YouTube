@@ -3,7 +3,7 @@
 
 #bin file
 **bin/
-
+/.metadata
 # Log file
 *.log
 
