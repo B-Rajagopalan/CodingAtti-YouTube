@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 public class TicketBooking 
 {	
-	private static int berthLimit = 2;
+	private static int berthLimit = 6/3;
 	private static int racLimit = 1;
 	private static int waitingListLimit = 1;
 	
