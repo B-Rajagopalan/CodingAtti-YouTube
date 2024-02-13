@@ -20,10 +20,21 @@ public class TaxiBooking
 		
 		for(Taxi t : taxiList)
 		{
-			if(t.getDropTime()<=pickupTime && Math.abs(pickupLocation - t.getCurrentLocation()) < min)
+			if(t.getDropTime()<=pickupTime && Math.abs(pickupLocation - t.getCurrentLocation()) <= min)
 			{
-				taxiReady = t;
-				min = Math.abs(pickupLocation - t.getCurrentLocation());
+				if(Math.abs(pickupLocation - t.getCurrentLocation())==min) 
+				{
+					// if Math.abs(..) is equal to min, the taxi with lowest earnings will be put in taxiReady object
+					if(taxiReady!=null && t.getEarnings()<taxiReady.getEarnings())
+					{
+						taxiReady = t;
+					}
+				}
+				else
+				{
+					taxiReady = t;
+					min = Math.abs(pickupLocation - t.getCurrentLocation());
+				}
 			}
 		}
 		
