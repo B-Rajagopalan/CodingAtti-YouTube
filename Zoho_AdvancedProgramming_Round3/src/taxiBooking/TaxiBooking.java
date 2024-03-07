@@ -46,7 +46,7 @@ public class TaxiBooking
 			taxiReady.setDropLocation(dropLocation);
 			taxiReady.setCurrentLocation(dropLocation);
 			taxiReady.setDropTime(pickupTime + Math.abs(dropLocation-pickupLocation));
-			taxiReady.setEarnings((taxiReady.getEarnings()) + Math.abs(dropLocation-pickupLocation) * (100+(10*10)));
+			taxiReady.setEarnings((taxiReady.getEarnings()) + (Math.abs(dropLocation-pickupLocation)*15-5)*10 + 100);
 			taxiReady.setTaxiId(taxiList.indexOf(taxiReady)+1);
 			taxiBookedHistory.add((Taxi)taxiReady.clone()); //clone object
 		}
