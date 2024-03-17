@@ -1,2 +1,2 @@
 # CodingAtti-YouTube
-Please check the series name and browse accordingly.
+Please check the playlist name and browse accordingly.
