@@ -4,17 +4,28 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+// CODE UPDATED. CHECK MAIN CLASS COMMENT FOR MORE DETAILS
 public class Snake {
     private char[][] snakeBoard = null;
-    Queue<Node> queue = new LinkedList<Node>();
+    private Queue<Node> queue = new LinkedList<Node>();
+    private Queue<Node> food = new LinkedList<Node>();  // to store the food positions
 
     Snake(int row, int col) {
-        this.snakeBoard = new char[row][col];
-        this.queue.add(new Node(0,0));
-        this.snakeBoard[1][0] = 'X';
-        this.snakeBoard[2][2] = 'X';
-        this.snakeBoard[3][4] = 'X';
-        this.snakeBoard[5][2] = 'X';
+        snakeBoard = new char[row][col];
+        queue.add(new Node(0,0));
+        // Old code where we place all the food at the same time
+//        this.snakeBoard[1][0] = 'X';
+//        this.snakeBoard[2][2] = 'X';
+//        this.snakeBoard[3][4] = 'X';
+//        this.snakeBoard[5][2] = 'X';
+
+        // Positions of food (X) to display
+        food.add(new Node(1,0));
+        food.add(new Node(2,2));
+        food.add(new Node(3,4));
+        food.add(new Node(5,2));
+        // Display first food (X)
+        displayFood(food.poll());
     }
 
     public void snakeMove(int row, int col) {
@@ -30,6 +41,15 @@ public class Snake {
                 int r = node.getRow();
                 int c = node.getColumn();
                 snakeBoard[r][c] = '\0';
+            }
+
+            // if current position contains food (X), display next food
+            if(snakeBoard[row][col] == 'X') {
+                // when last food (X) is reached by the snake, code tries to poll the next food position from queue
+                // but queue will be empty and we get null value. This check is to avoid that scenario
+                if(!food.isEmpty()) {
+                    displayFood(food.poll());
+                }
             }
 
             snakeBoard[row][col] = '.';
@@ -57,6 +77,13 @@ public class Snake {
             System.out.println("Invalid move");
             System.exit(0);
         }
+    }
+
+    // Displays new food in appropriate position
+    public void displayFood(Node node) {
+            int r = node.getRow();
+            int c = node.getColumn();
+            snakeBoard[r][c] = 'X';
     }
 
     public void printSnake() {
