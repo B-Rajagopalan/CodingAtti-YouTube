@@ -1,3 +1,5 @@
+package snakeGame;
+
 public class Node {
     private int row = 0;
     private int column = 0;
