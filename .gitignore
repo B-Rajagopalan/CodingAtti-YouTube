@@ -5,6 +5,8 @@
 **bin/
 /.metadata/
 /.settings/
+/.idea/
+/out/
 
 # Eclipse Core      
 .project
