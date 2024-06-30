@@ -19,6 +19,8 @@ and displaying the new food (X) in appropriate position
 
 Code Improvements: -
 ---> Added a new method 'moveForwardAndPrint' for repeatable codes
+---> 'while(!queue.isEmpty())' changed to 'if(!queue.isEmpty())' since we are using recursion, not iteration
+(Line no : 67 in Snake class)
 
 Fixed Bugs: -
 Snake bites itself condition repositioned : -

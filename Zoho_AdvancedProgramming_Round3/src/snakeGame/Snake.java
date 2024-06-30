@@ -64,7 +64,7 @@ public class Snake {
             // Placing '.' and printing the snakeBoard combined in a single method
             moveForwardAndPrint(row, col);
 
-            while(!queue.isEmpty()) {
+            if(!queue.isEmpty()) {
                 System.out.print("Enter a position : ");
                 Scanner s = new Scanner(System.in);
                 char direction = s.next().charAt(0);
