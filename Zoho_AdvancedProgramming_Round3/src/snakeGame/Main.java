@@ -22,7 +22,8 @@ Code Improvements: -
 
 Fixed Bugs: -
 Snake bites itself condition repositioned : -
----> The if condition checking 'if snake bites itself' is repositioned after the removal of tail process
+---> The condition checking 'if snake bites itself' is repositioned
+---> It is now placed after the removal of tail
 ---> To understand this, let us imagine the nostalgic nokia snake game
 ---> Imagine a scenario where snake rounds itself. It has its tail right before its head
 ---> If snake attempts to move forward, the tail moves first and then head moves to that position
