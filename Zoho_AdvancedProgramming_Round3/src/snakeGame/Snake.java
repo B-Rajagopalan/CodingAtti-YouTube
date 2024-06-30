@@ -24,18 +24,15 @@ public class Snake {
         food.add(new Node(2,2));
         food.add(new Node(3,4));
         food.add(new Node(5,2));
+        food.add(new Node(4,5));
         // Display first food (X)
         displayFood(food.poll());
     }
 
     public void snakeMove(int row, int col) {
         if(row >= 0 && row < snakeBoard.length && col >=0 && col < snakeBoard.length) {
-            if(snakeBoard[row][col] == '.') {
-                System.out.println("Game Over!!!");
-                System.exit(0);
-            }
-
             queue.add(new Node(row, col));
+            // Remove the tail
             if(snakeBoard[row][col] != 'X') {
                 Node node = queue.poll();
                 int r = node.getRow();
@@ -45,17 +42,24 @@ public class Snake {
 
             // if current position contains food (X), display next food
             if(snakeBoard[row][col] == 'X') {
-                // when last food (X) is reached by the snake, code tries to poll the next food position from queue
-                // but queue will be empty and we get null value. This check is to avoid that scenario
-                if(!food.isEmpty()) {
-                    displayFood(food.poll());
+                // If there is no food remaining to display. Game over
+                if(food.isEmpty()) {
+                    moveForwardAndPrint(row, col);
+                    System.out.println("Game Over!!!");
+                    System.exit(0);
                 }
+                displayFood(food.poll());
             }
 
-            snakeBoard[row][col] = '.';
+            // Snake bites itself
+            if(snakeBoard[row][col] == '.') {
+                System.out.println("Game Over!!!");
+                System.exit(0);
+            }
+            // Placing '.' and printing the snakeBoard combined in a single method
+            moveForwardAndPrint(row, col);
 
             while(!queue.isEmpty()) {
-                printSnake();
                 System.out.print("Enter a position : ");
                 Scanner s = new Scanner(System.in);
                 char direction = s.next().charAt(0);
@@ -84,6 +88,11 @@ public class Snake {
             int r = node.getRow();
             int c = node.getColumn();
             snakeBoard[r][c] = 'X';
+    }
+
+    public void moveForwardAndPrint(int row, int col) {
+        snakeBoard[row][col] = '.';
+        printSnake();
     }
 
     public void printSnake() {
