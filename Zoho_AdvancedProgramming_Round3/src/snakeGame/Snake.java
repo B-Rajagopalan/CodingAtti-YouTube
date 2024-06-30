@@ -1,3 +1,5 @@
+package snakeGame;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -51,8 +53,7 @@ public class Snake {
                     snakeMove(row, --col);
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("Invalid move");
             System.exit(0);
         }
