@@ -13,11 +13,11 @@ public class Snake {
     Snake(int row, int col) {
         snakeBoard = new char[row][col];
         queue.add(new Node(0,0));
-        // Old code where we place all the food at the same time
-//        this.snakeBoard[1][0] = 'X';
-//        this.snakeBoard[2][2] = 'X';
-//        this.snakeBoard[3][4] = 'X';
-//        this.snakeBoard[5][2] = 'X';
+        /* Old code where we place all the food at the same time
+        this.snakeBoard[1][0] = 'X';
+        this.snakeBoard[2][2] = 'X';
+        this.snakeBoard[3][4] = 'X';
+        this.snakeBoard[5][2] = 'X';  */
 
         // Positions of food (X) to display
         food.add(new Node(1,0));
@@ -31,6 +31,11 @@ public class Snake {
 
     public void snakeMove(int row, int col) {
         if(row >= 0 && row < snakeBoard.length && col >=0 && col < snakeBoard.length) {
+            /* Snake bites itself (Code repositioned)
+            if(snakeBoard[row][col] == '.') {
+                System.out.println("Game Over!!!");
+                System.exit(0);
+            } */
             queue.add(new Node(row, col));
             // Remove the tail
             if(snakeBoard[row][col] != 'X') {
