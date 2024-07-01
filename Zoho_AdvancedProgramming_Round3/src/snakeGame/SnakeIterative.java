@@ -13,11 +13,6 @@ public class SnakeIterative {
     SnakeIterative(int row, int col) {
         snakeBoard = new char[row][col];
         queue.add(new Node(0,0));
-        /* Old code where we place all the food at the same time
-        this.snakeBoard[1][0] = 'X';
-        this.snakeBoard[2][2] = 'X';
-        this.snakeBoard[3][4] = 'X';
-        this.snakeBoard[5][2] = 'X';  */
 
         // Positions of food (X) to display
         food.add(new Node(1,0));
