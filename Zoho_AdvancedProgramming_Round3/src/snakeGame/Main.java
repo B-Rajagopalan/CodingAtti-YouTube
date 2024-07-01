@@ -2,12 +2,17 @@ package snakeGame;
 
 public class Main {
     public static void main(String[] args) {
+        /* Recursive approach
         Snake snake = new Snake(6,6);
-        snake.snakeMove(0,0);
+        snake.snakeMove(0,0); */
+
+        //Iterative approach
+        SnakeIterative snakeIterative = new SnakeIterative(6,6);
+        snakeIterative.initiateSnake();
     }
 }
 
-/* CODE UPDATE
+/* CODE UPDATE IN SNAKE CLASS (After posting the video)
 New Scenario : -
 ---> We have added a scenario where interviewer might ask to place the food (X) in each position dynamically.
 ---> It means that after the Snake eats the first food, we must display the second food
@@ -21,6 +26,7 @@ Code Improvements: -
 ---> Added a new method 'moveForwardAndPrint' for repeatable codes
 ---> 'while(!queue.isEmpty())' changed to 'if(!queue.isEmpty())' since we are using recursion, not iteration
 (Line no : 67 in Snake class)
+---> Added iterative approach in SnakeIterative class (Better than recursion in memory management)
 
 Fixed Bugs: -
 Snake bites itself condition repositioned : -
