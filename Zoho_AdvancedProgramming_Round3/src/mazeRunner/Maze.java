@@ -38,12 +38,33 @@ public class Maze {
 
     private static class Node {
         int row, column, steps;
+        Node previous;
 
-        Node(int row, int column, int steps) {
+        Node(int row, int column, int steps, Node previous) {
             this.row = row;
             this.column = column;
             this.steps = steps;
+            this.previous = previous;
         }
+    }
+
+    public boolean putMonster(int row, int column) {
+        row--;
+        column--;
+        if (row >= maze.length || column >= maze[0].length) return false;
+        maze[row][column] = 'M';
+        return true;
+    }
+
+    public void shortestPathPrintMaze(Node node) {
+        Node current = node;
+        while (current != null) {
+            char value = maze[current.row][current.column];
+            if (value != 'A' && value != 'T') maze[current.row][current.column] = 'P';
+            current = current.previous;
+        }
+        System.out.println("Maze with path:");
+        printMaze();
     }
 
     public int shortestPath(int row, int column) {
@@ -59,7 +80,7 @@ public class Maze {
         boolean[][] visited = new boolean[rowLength][columnLength];
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         Queue<Node> queue = new LinkedList<>();
-        queue.add(new Node(row, column, 0));
+        queue.add(new Node(row, column, 0, null));
         visited[row][column] = true;
 
         while (!queue.isEmpty()) {
@@ -68,11 +89,19 @@ public class Maze {
                 int nextRow = current.row + direction[0];
                 int nextColumn = current.column + direction[1];
 
-                if (nextRow >= 0 && nextRow < rowLength && nextColumn >= 0 && nextColumn < columnLength && !visited[nextRow][nextColumn]) {
-                    if (maze[nextRow][nextColumn] == 'T') return current.steps + 1;
-                    Node nextNode = new Node(nextRow, nextColumn, current.steps + 1);
+                if (nextRow >= 0 && nextRow < rowLength && nextColumn >= 0 && nextColumn < columnLength && !visited[nextRow][nextColumn]
+                        && maze[nextRow][nextColumn] != 'M'
+                ) {
+                    if (maze[nextRow][nextColumn] == 'T') {
+                        shortestPathPrintMaze(current);
+                        return current.steps + 1;
+                    }
+                    Node nextNode = new Node(nextRow, nextColumn, current.steps + 1, current);
                     queue.add(nextNode);
                     visited[nextRow][nextColumn] = true;
+//                    maze[nextRow][nextColumn] = 'A';
+//                    printMaze();
+//                    System.out.println("---------------------------------");
                 }
             }
         }
