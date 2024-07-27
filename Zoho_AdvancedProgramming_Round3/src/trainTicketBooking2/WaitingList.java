@@ -1,4 +1,4 @@
-package TrainTicketBooking2;
+package trainTicketBooking2;
 
 public class WaitingList {
     private char source;

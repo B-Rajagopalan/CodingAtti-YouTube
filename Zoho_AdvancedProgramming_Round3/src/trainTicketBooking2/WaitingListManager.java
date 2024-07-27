@@ -1,4 +1,4 @@
-package TrainTicketBooking2;
+package trainTicketBooking2;
 
 public class WaitingListManager {
     private TicketSystem ticketSystem;
