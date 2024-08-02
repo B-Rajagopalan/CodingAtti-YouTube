@@ -67,7 +67,8 @@ public class TicketSystem {
 
     // --- methods used in cancellation class ---
     protected Ticket getTicket(int pnr) {
-        return ticketsBooked.get(pnr);
+        Ticket bookedTicket = ticketsBooked.get(pnr);
+        return bookedTicket != null ? bookedTicket : waitingList.get(pnr);
     }
 
     protected void increaseSeatAvailability(char source, char destination, int seats) {

@@ -37,4 +37,18 @@ public class WaitingListManager {
         WaitingList wl = new WaitingList(source, destination, seats);
         wl.execute();
     }
+
+    protected void waitingListRemoval(int pnr, int seatsToCancel, Ticket waitingListTicket) {
+        int seatsBooked  = waitingListTicket.getSeats();
+        if(seatsBooked == seatsToCancel) {
+            ticketSystem.waitingList.remove(pnr);
+            System.out.println("Canceled ticket in waiting list with pnr "+ pnr);
+        }
+        else {
+            waitingListTicket.setSeats(waitingListTicket.getSeats() - seatsToCancel);
+            System.out.println("Partially canceled ticket in waiting list with pnr "+ pnr);
+        }
+        // update waiting list seat tracker (assuming user can't able to give seats more than he booked)
+        ticketSystem.setSeatsBooked(ticketSystem.getSeatsBooked() - seatsToCancel);
+    }
 }
